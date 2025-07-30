@@ -1,29 +1,16 @@
-// -----------------------------------------------------------------------
-// <copyright file="ServerHandler.cs" company="ExMod Team">
-// Copyright (c) ExMod Team. All rights reserved.
-// Licensed under the CC BY-SA 3.0 license.
-// </copyright>
-// -----------------------------------------------------------------------
+using Exiled.API.Features;
 
-namespace Exiled.Example.Events
+namespace Exiled.Example.Events;
+
+internal sealed class ServerHandler
 {
-    using Exiled.API.Features;
-
-    /// <summary>
-    /// Handles server-related events.
-    /// </summary>
-    internal sealed class ServerHandler
+    public void OnWaitingForPlayers()
     {
-        /// <inheritdoc cref="Exiled.Events.Handlers.Server.OnWaitingForPlayers"/>
-        public void OnWaitingForPlayers()
-        {
-            Log.Info("I'm waiting for players!"); // This is an example of information messages sent to your console!
-        }
+        Log.Info("I'm waiting for players!"); // This is an example of information messages sent to your console!
+    }
 
-        /// <inheritdoc cref="Exiled.Events.Handlers.Server.OnRoundStarted"/>
-        public void OnRoundStarted()
-        {
-            Log.Info($"A round has started with {Player.Dictionary.Count} players!");
-        }
+    public void OnRoundStarted()
+    {
+        Log.Info($"A round has started with {Player.Dictionary.Count} players!");
     }
 }

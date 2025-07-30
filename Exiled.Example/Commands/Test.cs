@@ -1,54 +1,44 @@
-// -----------------------------------------------------------------------
-// <copyright file="Test.cs" company="ExMod Team">
-// Copyright (c) ExMod Team. All rights reserved.
-// Licensed under the CC BY-SA 3.0 license.
-// </copyright>
-// -----------------------------------------------------------------------
+using CommandSystem;
+using Exiled.API.Features;
+using Exiled.API.Features.Pickups;
+using System;
 
-namespace Exiled.Example.Commands
+namespace Exiled.Example.Commands;
+
+[CommandHandler(typeof(RemoteAdminCommandHandler))]
+public class Test : ICommand
 {
-    using System;
+    public string Command { get; } = "test";
 
-    using CommandSystem;
-    using Exiled.API.Features;
-    using Exiled.API.Features.Pickups;
+    public string[] Aliases { get; } = new[] { "t" };
 
-    /// <summary>
-    /// This is an example of how commands should be made.
-    /// </summary>
-    [CommandHandler(typeof(RemoteAdminCommandHandler))]
-    public class Test : ICommand
+    public string Description { get; } = "A simple test command.";
+
+    public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
     {
-        /// <inheritdoc/>
-        public string Command { get; } = "test";
+        Player player = Player.Get(sender);
 
-        /// <inheritdoc/>
-        public string[] Aliases { get; } = new[] { "t" };
+        Log.Warn($"{player.Items.Count} -- {player.Inventory.UserInventory.Items.Count}");
 
-        /// <inheritdoc/>
-        public string Description { get; } = "A simple test command.";
-
-        /// <inheritdoc/>
-        public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
+        foreach (Player item in Player.List)
         {
-            Player player = Player.Get(sender);
-
-            Log.Warn($"{player.Items.Count} -- {player.Inventory.UserInventory.Items.Count}");
-
-            foreach (Player item in Player.List)
-                Log.Warn(item);
-
-            foreach (Pickup pickup in Pickup.List)
-                Log.Warn($"{pickup.Type} ({pickup.Serial}) -- {pickup.Position}");
-
-            foreach (PocketDimensionTeleport teleport in Map.PocketDimensionTeleports)
-                Log.Warn($"{teleport._type}");
-
-            player.ClearInventory();
-            response = $"{player.Nickname} sent the command!";
-
-            // Return true if the command was executed successfully; otherwise, false.
-            return true;
+            Log.Warn(item);
         }
+
+        foreach (Pickup pickup in Pickup.List)
+        {
+            Log.Warn($"{pickup.Type} ({pickup.Serial}) -- {pickup.Position}");
+        }
+
+        foreach (PocketDimensionTeleport teleport in Map.PocketDimensionTeleports)
+        {
+            Log.Warn($"{teleport._type}");
+        }
+
+        player.ClearInventory();
+        response = $"{player.Nickname} sent the command!";
+
+        // Return true if the command was executed successfully; otherwise, false.
+        return true;
     }
 }

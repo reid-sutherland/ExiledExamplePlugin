@@ -1,30 +1,17 @@
-// -----------------------------------------------------------------------
-// <copyright file="WarheadHandler.cs" company="ExMod Team">
-// Copyright (c) ExMod Team. All rights reserved.
-// Licensed under the CC BY-SA 3.0 license.
-// </copyright>
-// -----------------------------------------------------------------------
+using Exiled.API.Features;
+using Exiled.Events.EventArgs.Warhead;
 
-namespace Exiled.Example.Events
+namespace Exiled.Example.Events;
+
+internal sealed class WarheadHandler
 {
-    using Exiled.API.Features;
-    using Exiled.Events.EventArgs.Warhead;
-
-    /// <summary>
-    /// Handles warhead events.
-    /// </summary>
-    internal sealed class WarheadHandler
+    public void OnStopping(StoppingEventArgs ev)
     {
-        /// <inheritdoc cref="Exiled.Events.Handlers.Warhead.OnStopping(StoppingEventArgs)"/>
-        public void OnStopping(StoppingEventArgs ev)
-        {
-            Log.Info($"{ev.Player.Nickname} stopped the warhead!");
-        }
+        Log.Info($"{ev.Player.Nickname} stopped the warhead!");
+    }
 
-        /// <inheritdoc cref="Exiled.Events.Handlers.Warhead.OnStarting(StartingEventArgs)"/>
-        public void OnStarting(StartingEventArgs ev)
-        {
-            Log.Info($"{ev.Player.Nickname} started the warhead!");
-        }
+    public void OnStarting(StartingEventArgs ev)
+    {
+        Log.Info($"{ev.Player.Nickname} started the warhead!");
     }
 }
