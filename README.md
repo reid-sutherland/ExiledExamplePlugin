@@ -4,9 +4,9 @@
 
 ## Note about `git`
 
-Do not clone this repo, it should not change and should only server as an example.
+Do not clone this repo, it should not change and should only serve as an example.
 
-Instead, download the source code .zip and extract to a folder in `C:\\Users\\<user>\\source\\repos`.
+Instead, download the source code .zip and extract to a folder in `C:\Users\<user>\source\repos`.
 
 Then once you've made it your own, use git commands or SourceTree to initialize it as a new repository and upload it to GitHub.
 
@@ -38,9 +38,9 @@ Double check that that folder exists and contains a bunch of Unity/CSharp .dlls.
 #### How to set a Windows environment variable for noobs
 
 - Search `environment variable` in Windows.
-- Click `Edit the System Environment Variables`.
+- Click `Edit the System Environment Variables`
 - Click the `Environment Variables...` button.
-- Under `User variables for <user>`, click `New...`.
+- Under `User variables for <user>`, click `New...`
 - Use the Name and Value listed above. You can use `Browse Directory...` to find the directory manually if you don't want to type the full path.
 - Click `Apply` or `OK` until all the windows are gone.
 
@@ -50,11 +50,11 @@ Not all plugins will need this, but many (such as Common Utilities) will.
 
 If your project requires `Assembly-CSharp-Publicized.dll`, follow these steps:
 - Go to this github page: https://github.com/Raul125/APublicizer/releases/tag/1.0.0
-- Download `Release.rar`.
+- Download `Release.rar`
 - Use 7-zip (or WinRAR LMAO) to extract it.
 - Open a Command Prompt and navigate to the extracted folder.
 - Run this command: `APublicizer.exe <SCPServer_location>\SCPSL_Data\Managed\Assembly-CSharp.dll`
-- This will publicize the `Assembly-CSharp.dll` and save it to the same .dll folder with the name `Assembly-CSharp-Publicized.dll`.
+- This will publicize the `Assembly-CSharp.dll` and save it to the same .dll folder with the name `Assembly-CSharp-Publicized.dll`
 - You can delete the `APublicizer` folder and contents now, you will likely never need it again :)
 
 
